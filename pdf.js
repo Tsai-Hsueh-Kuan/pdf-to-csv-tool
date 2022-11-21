@@ -1,7 +1,6 @@
 const fs = require('fs');
 const pdfParse = require('pdf-parse');
-// eslint-disable-next-line
-const { stringify } = require('csv-stringify/sync');
+const stringify = require('csv-stringify/lib/sync');
 const {
   pdfsFolder, csvFile, expenseNumbers, twoLetterList,
 } = require('./constant');
