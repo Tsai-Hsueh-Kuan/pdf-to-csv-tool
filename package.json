@@ -1,0 +1,21 @@
+{
+  "name": "pdf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pdf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-stringify": "^6.2.1",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
