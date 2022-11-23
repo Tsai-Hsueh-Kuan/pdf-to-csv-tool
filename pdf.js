@@ -32,14 +32,14 @@ async function main() {
         });
         const issuerString = e.substring(e.indexOf('Issuer') + 6);
         let undertaker = issuerString;
-
-        let pattern = new RegExp("[\u4E00-\u9FA5]+")
-        if( pattern.test(issuerString[0])) {
+        const chineseReg = '[\u4E00-\u9FA5]+';
+        const pattern = new RegExp(chineseReg);
+        if (pattern.test(issuerString[0])) {
           undertaker = issuerString.substring(0, 3);
         } else {
-          for(let i = 0; i < issuerString.length; i++ ){
-            if(pattern.test(issuerString[i])){
-              undertaker = issuerString.substring(i,i+3)
+          for (let i = 0; i < issuerString.length; i += 1) {
+            if (pattern.test(issuerString[i])) {
+              undertaker = issuerString.substring(i, i + 3);
               break;
             }
           }
