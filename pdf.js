@@ -23,14 +23,27 @@ async function main() {
         const e = pages[0].replace(/\r\n|\n|\s+/g, '');
 
         const itemsString = e.substring(e.indexOf('申請摘要', e.indexOf('憑證號碼')) + 4, e.indexOf('總未稅', e.indexOf('憑證號碼')));
+
         let checkExpenseNumber;
         expenseNumbers.forEach((expenseNumber) => {
           if (itemsString.indexOf(expenseNumber) !== -1) {
             checkExpenseNumber = expenseNumber;
           }
         });
-        const issuerString = e.substring(e.indexOf('Issuer') + 6, e.indexOf('Issuer') + 9);
+        const issuerString = e.substring(e.indexOf('Issuer') + 6);
         let undertaker = issuerString;
+
+        let pattern = new RegExp("[\u4E00-\u9FA5]+")
+        if( pattern.test(issuerString[0])) {
+          undertaker = issuerString.substring(0, 3);
+        } else {
+          for(let i = 0; i < issuerString.length; i++ ){
+            if(pattern.test(issuerString[i])){
+              undertaker = issuerString.substring(i,i+3)
+              break;
+            }
+          }
+        }
         twoLetterList.forEach((name) => {
           if (issuerString.indexOf(name) !== -1) {
             undertaker = issuerString.substring(0, 2);
